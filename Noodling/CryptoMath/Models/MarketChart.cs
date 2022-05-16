@@ -1,4 +1,4 @@
-namespace Noodling.CryptoMath.Model.MarketChart
+namespace Noodling.CryptoMath.Models.MarketChart
 {
   // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
   public class Root

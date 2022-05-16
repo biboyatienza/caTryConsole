@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Text.Json;
-using Noodling.CryptoMath.Model.MarketChart;
+using Noodling.CryptoMath.Models.MarketChart;
+using Noodling.CryptoMath.Extensions;
 
 Console.WriteLine("Hello, World!");
 
@@ -15,7 +16,8 @@ Console.WriteLine("Hello, World!");
    1. How to read json data from a file, result is a string
    2. Create json schema, using https://json2csharp.com/
    3. Create an object using json schema and convert the string to class object
-   4. Show content of the object 
+   4. Show content of the object
+   5. Create Extension method for Moving Average 
 */
 
 const string JSON_DATA_PATH = "./Noodling/CryptoMath/Data/btc.json";
@@ -28,10 +30,21 @@ using (StreamReader r = new StreamReader(JSON_DATA_PATH))
     Console.WriteLine(cryptoData);
 }
 
-foreach (var price in cryptoData.prices)
-{
-    Console.WriteLine(price);
-}
+    var dailyPrices = cryptoData.prices.Select(p => p[1]);
+
+	// var results = dailyPrices.Take(10);
+	var results = dailyPrices.Take(10).MovingAverage(2);
+	Console.WriteLine(results);
+    foreach (var result in results)
+    {
+        Console.WriteLine(result);
+    }
 
 
-
+// foreach (var day in dailyPrice)
+// {
+//     // {
+//         Console.WriteLine(dayPrice);
+//         Console.WriteLine(dayPrice);
+//     // }
+// }
