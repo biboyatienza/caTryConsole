@@ -1,0 +1,10 @@
+### 16.May.2022 05:30 coingecko api 
+
+### ticker's prices, market_caps and total_volumes
+GET https://api.coingecko.com/api/v3/coins/matic-network/market_chart?vs_currency=usd&days=30&interval=dailt
+Content-Type: application/json
+
+### Too big data: 
+### See Data/coins.coingecko.json for offline results
+GET https://api.coingecko.com/api/v3/coins/list
+Content-Type: application/json
